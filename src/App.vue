@@ -8,6 +8,7 @@
       <TodoList
           :todos
           :listBools
+          @delete="deleteTodo"
       />
 
     </div>

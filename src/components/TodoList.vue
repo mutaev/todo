@@ -25,7 +25,7 @@ export default defineComponent({
       <ul v-auto-animate class="todo__list-items">
         <li v-for="todo in todos" class="todo__list-item">
           {{ todo }}
-          <img  class="todo__list-ic" src="../assets/delete-ic.png" alt="delete">
+          <img @click="$emit('delete', todo)" class="todo__list-ic" src="../assets/delete-ic.png" alt="delete">
         </li>
       </ul>
     </div>
