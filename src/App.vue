@@ -2,23 +2,13 @@
   <div class="todo">
     <div class="todo__inner">
       <h2 class="todo__title">Mutaev Todo</h2>
-      <div class="todo__inp-box">
-        <input v-model="inputValue" class="todo__input" type="text" placeholder="Введите название задачи">
-        <button @click="addTodo" class="todo__btn">Добавить</button>
-      </div>
 
+      <InputButton @add-todo="addTodo" v-model="inputValue" />
 
-      <div v-if="listBools">
-        <h2 class="text">Добавьте хотя бы одну задачу</h2>
-      </div>
-      <div v-else class="todo__list">
-        <ul class="todo__list-items">
-          <li v-for="todo in todos" class="todo__list-item">
-            {{ todo }}
-            <img @click="deleteTodo(todo)" class="todo__list-ic" src="./assets/delete-ic.png" alt="">
-          </li>
-        </ul>
-      </div>
+      <TodoList
+          :todos
+          :listBools
+      />
 
     </div>
   </div>
@@ -27,7 +17,11 @@
 <script>
 
 
+import InputButton from "@/components/InputButton.vue";
+import TodoList from "@/components/TodoList.vue";
+
 export default {
+  components: {TodoList, InputButton},
   data() {
     return {
       inputValue: '',
@@ -86,6 +80,7 @@ body {
   font-family: "Corbel";
   display: block;
   width: 100%;
+  background-color: transparent;
 }
 .todo__input::placeholder {
   font-family: "Corbel";
